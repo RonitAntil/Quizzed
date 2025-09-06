@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzed - AI-Powered Learning Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="loading-spinner hidden">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-brain"></i>
+                <span>Quizzed</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#dashboard" class="nav-link">Dashboard</a>
+                <a href="#topics" class="nav-link">Topics</a>
+                <a href="#analytics" class="nav-link">Analytics</a>
+                <div class="auth-buttons">
+                    <button id="login-btn" class="btn btn-outline">Login</button>
+                    <button id="signup-btn" class="btn btn-primary">Sign Up</button>
+                    <div id="user-menu" class="user-menu hidden">
+                        <img id="user-avatar" src="assets/default-avatar.png" alt="User Avatar">
+                        <span id="username">User</span>
+                        <button id="logout-btn" class="btn btn-outline btn-sm">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Master Any Subject with <span class="highlight">AI-Powered</span> Quizzes</h1>
+                <p>Access 1000+ questions across 50+ topics with personalized learning powered by artificial intelligence</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <strong>1000+</strong>
+                        <span>Questions</span>
+                    </div>
+                    <div class="stat">
+                        <strong>50+</strong>
+                        <span>Topics</span>
+                    </div>
+                    <div class="stat">
+                        <strong>AI</strong>
+                        <span>Powered</span>
+                    </div>
+                </div>
+                <button class="cta-btn">Start Learning Now</button>
+            </div>
+        </section>
+
+        <!-- Topics Section -->
+        <section id="topics" class="topics-section hidden">
+            <div class="section-header">
+                <h2>Choose Your Topic</h2>
+                <div class="filters">
+                    <select id="difficulty-filter">
+                        <option value="">All Difficulties</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                    <input type="text" id="search-topics" placeholder="Search topics...">
+                </div>
+            </div>
+            <div id="topics-grid" class="topics-grid">
+                <!-- Topics will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="quiz-section hidden">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                    <div class="quiz-info">
+                        <span id="question-counter">1 / 10</span>
+                        <span id="timer">05:00</span>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <h3 id="question-text">Loading question...</h3>
+                    <div id="question-options" class="options-container">
+                        <!-- Options will be loaded dynamically -->
+                    </div>
+                    
+                    <!-- AI-Generated Personalized Answer -->
+                    <div id="ai-explanation" class="ai-explanation hidden">
+                        <div class="ai-header">
+                            <i class="fas fa-robot"></i>
+                            <span>AI Personalized Explanation</span>
+                        </div>
+                        <div id="ai-explanation-text"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-controls">
+                    <button id="prev-btn" class="btn btn-outline" disabled>Previous</button>
+                    <button id="submit-answer" class="btn btn-primary">Submit Answer</button>
+                    <button id="next-btn" class="btn btn-primary" disabled>Next</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="dashboard hidden">
+            <div class="dashboard-header">
+                <h2>Your Learning Dashboard</h2>
+            </div>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Recent Quizzes</h3>
+                    <div id="recent-quizzes"></div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Performance</h3>
+                    <div id="performance-chart"></div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Recommended Topics</h3>
+                    <div id="recommended-topics"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login to Quizzed</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Join Quizzed</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
