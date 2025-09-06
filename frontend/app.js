@@ -1,4 +1,3 @@
-// Global Application State
 class QuizzedApp {
     constructor() {
         this.currentUser = null;
@@ -931,4 +930,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const style = document.createElement('style');
     style.textContent = additionalCSS;
     document.head.appendChild(style);
+
 });
