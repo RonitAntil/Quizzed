@@ -1,4 +1,3 @@
-// Global Application State
 class QuizzedApp {
     constructor() {
         this.currentUser = null;
@@ -7,7 +6,7 @@ class QuizzedApp {
         this.userAnswers = [];
         this.quizTimer = null;
         this.timeRemaining = 0;
-        this.apiBase = '/api';
+        this.apiBase = 'https://quizzed-3mva.onrender.com';
         
         this.init();
     }
@@ -931,4 +930,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const style = document.createElement('style');
     style.textContent = additionalCSS;
     document.head.appendChild(style);
+
 });
