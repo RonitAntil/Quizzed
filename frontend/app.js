@@ -6,7 +6,7 @@ class QuizzedApp {
         this.userAnswers = [];
         this.quizTimer = null;
         this.timeRemaining = 0;
-        this.apiBase = 'https://quizzed-3mva.onrender.com';
+        this.apiBase = 'https://quizzed-im87.onrender.com';
         
         this.init();
     }
@@ -932,3 +932,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(style);
 
 });
+
